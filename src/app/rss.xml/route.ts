@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getAllArticles } from '@/lib/articles';
 
 export async function GET() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://latestbrief.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.gotperfects.online';
   const articles = getAllArticles();
 
   const rssItemsXml = articles
@@ -23,9 +23,9 @@ export async function GET() {
   const rssFeedXml = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2000/svg">
   <channel>
-    <title>LATEST BRIEF | Real-Time Global News &amp; Intelligence</title>
+    <title>GOT PERFECTS | Real-Time Global News &amp; Intelligence</title>
     <link>${baseUrl}</link>
-    <description>Fastest real-time coverage on World News, Technology, AI, Markets, Space, and Clean Energy.</description>
+    <description>Fastest real-time news coverage on Technology, Agentic AI, Financial Markets, Space, and Clean Energy.</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     ${rssItemsXml}
