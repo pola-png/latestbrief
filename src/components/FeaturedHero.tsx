@@ -2,10 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Clock, Eye, ThumbsUp, Flame, ArrowRight, Zap, CheckCircle2 } from 'lucide-react';
 import { Article } from '@/types/article';
 import { ArticleCard } from './ArticleCard';
+import { ImageWithFallback } from './ImageWithFallback';
 
 interface FeaturedHeroProps {
   articles: Article[];
@@ -16,7 +16,6 @@ export function FeaturedHero({ articles }: FeaturedHeroProps) {
 
   const mainArticle = articles[0];
   const secondaryArticles = articles.slice(1, 3);
-  const trendingList = articles.slice(0, 4);
 
   const mainDate = new Date(mainArticle.publishedAt).toLocaleDateString('en-US', {
     month: 'long',
@@ -31,8 +30,9 @@ export function FeaturedHero({ articles }: FeaturedHeroProps) {
         {/* Main Featured Article (7 Cols) */}
         <div className="lg:col-span-7 flex flex-col justify-between group">
           <div className="relative w-full h-[380px] sm:h-[450px] rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl">
-            <Image
+            <ImageWithFallback
               src={mainArticle.image}
+              fallbackSrc="/images/tech_ai_cover.jpg"
               alt={mainArticle.title}
               fill
               priority
@@ -103,7 +103,7 @@ export function FeaturedHero({ articles }: FeaturedHeroProps) {
           </div>
 
           <div className="space-y-4">
-            {secondaryArticles.map((art, idx) => (
+            {secondaryArticles.map((art) => (
               <ArticleCard key={art.id} article={art} variant="compact" />
             ))}
           </div>
