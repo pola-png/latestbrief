@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "GOT PERFECTS | Real-Time Global News & High-Value Intelligence",
   description: "Verified news coverage and high-value research dispatches on artificial intelligence, financial markets, space science, and clean energy.",
   other: {
-    'google-adsense-account': process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || 'ca-pub-XXXXXXXXXXXXXXXX',
+    'google-adsense-account': 'ca-pub-3004467059794580',
   },
 };
 
@@ -28,7 +28,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const adsenseClientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
+  const adsenseClientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || 'ca-pub-3004467059794580';
 
   return (
     <html
@@ -37,14 +37,12 @@ export default function RootLayout({
     >
       <head>
         {/* Google AdSense Script Integration */}
-        {adsenseClientId && (
-          <Script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`}
-            crossOrigin="anonymous"
-            strategy="afterInteractive"
-          />
-        )}
+        <Script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </head>
       <body className="min-h-full flex flex-col bg-slate-950 text-slate-100 font-sans">
         {children}

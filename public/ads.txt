@@ -1,3 +1,2 @@
 # Google AdSense Authorized Digital Sellers File for gotperfects.online
-# Replace ca-pub-XXXXXXXXXXXXXXXX with your actual Google AdSense Publisher ID
-google.com, ca-pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+google.com, pub-3004467059794580, DIRECT, f08c47fec0942fa0
